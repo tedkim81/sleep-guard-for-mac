@@ -11,6 +11,8 @@ Sleep disabled: turns off automatically in 1h 30m
 
 While it's on, the menu bar shows `☕️ 1:29` (time left). Click it to turn sleep back on.
 
+Why and how it was built: [Making a MacBook That Never Sleeps](https://tedfactory.com/en/notes/essays/keep-macbook-awake-lid-closed/) (essay)
+
 ## Why not just `caffeinate`?
 
 `caffeinate -i` only blocks *idle* sleep: Apple's IOKit documentation for that assertion says the Mac may still sleep when you close the lid, choose Apple menu → Sleep, or run low on battery. `caffeinate -s` is documented only as preventing system sleep on AC power, with nothing said about a closed lid, so don't count on it there either. To survive a closed lid you need `sudo pmset -a disablesleep 1`, but that's a system setting: it stays on after the command ends, and even after a reboot, until you turn it off. If you forget, the Mac never sleeps again, even in your bag.
